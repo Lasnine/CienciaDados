@@ -14,3 +14,5 @@ app.add_middleware(
 @app.get("/") 
 def rota_raiz(): 
     return {"message": "API está funcionando!"}
+
+# python -m uvicorn main:app --reload -> ligando o servidor pelo terminal

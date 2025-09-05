@@ -1,0 +1,25 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIO</title>
+</head>
+<body>
+    <h1>CADASTRO DE PRODUTO</h1>
+    <form onsubmit="enviarProduto()">
+        <input type="text" id="nome" placeholder="Nome" required>
+        <br>
+        <input type="number" id="preco" placeholder="Preco" required>
+        <br>
+        <input type="number" id="quantidade" placeholder="Quantidade" required>
+        <br>
+        <button type="submit">SALVAR</button>
+    </form>
+    <script>
+        function enviarProduto(){
+            event.preventDefault();
+            alert("Produto cadastrado com sucesso!");
+        }
+    </script>
+</body>
+</html>

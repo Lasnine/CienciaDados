@@ -28,14 +28,12 @@
         const horario = (data) => {
         return data.toLocaleTimeString();
         }
-
         const atualizarRelogio = () => {
             const relogioElement = document.getElementById('relogio');
             const horaAtual = new Date();
             relogioElement.textContent = horario(horaAtual);
         }
         atualizarRelogio();
-
         setInterval(atualizarRelogio, 1000);
     </script>
 </body>
