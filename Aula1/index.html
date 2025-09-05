@@ -2,23 +2,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>ATIVIDADE</title>
 </head>
 <body>
     <h1>MEU API</h1>
-    <button onclick="ChamarAPI()">CHAMAR API</button>
-    <p id="resposta"></p>
+    <div class="botao">
+        <button onclick="ChamarAPI()">CHAMAR API</button>
+    </div>
+    <p id="resposta" class="resposta"></p>
+    <br>
+    <div id="relogio"></div>
 
     <script>
         function ChamarAPI(){
-            fetch('https://localhost:8000/')
+            fetch('http://localhost:8000/')
             .then(response => response.json())
             .then(data => {
-                document.getElementById('resposta').textContent = data.mensagem;
+                document.getElementById('resposta').textContent = data.message;
             }).catch(err => {
                 document.getElementById('resposta').textContent = 'Erro ao chamar a API: ';
             });
-        }   
+        }  
+
+        const horario = (data) => {
+        return data.toLocaleTimeString();
+        }
+
+        const atualizarRelogio = () => {
+            const relogioElement = document.getElementById('relogio');
+            const horaAtual = new Date();
+            relogioElement.textContent = horario(horaAtual);
+        }
+        atualizarRelogio();
+
+        setInterval(atualizarRelogio, 1000);
     </script>
 </body>
 </html>
