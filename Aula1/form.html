@@ -2,23 +2,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>FORMULARIO</title>
 </head>
 <body>
     <h1>CADASTRO DE PRODUTO</h1>
     <form onsubmit="enviarProduto()">
-        <input type="text" id="nome" placeholder="Nome" required>
-        <br>
-        <input type="number" id="preco" placeholder="Preco" required>
-        <br>
-        <input type="number" id="quantidade" placeholder="Quantidade" required>
-        <br>
-        <button type="submit">SALVAR</button>
+        <div class="formulario">
+            <input type="text" id="nome" placeholder="Nome" required>
+            <br>
+            <input type="number" id="preco" placeholder="Preco" step="0.01" required>
+            <br>
+            <input type="number" id="quantidade" placeholder="Quantidade" required>
+            <br>
+        </div>
+        <div  class="botao">
+            <button type="submit">SALVAR</button>
+        </div>
+        <p id="resposta"></p>
     </form>
     <script>
-        function enviarProduto(){
+        function enviarProduto(event){
             event.preventDefault();
-            alert("Produto cadastrado com sucesso!");
+
+            const nome = document.getElementById('nome').value;
+            const preco = document.getElementById('preco').value;
+            const quantidade = document.getElementById('quantidade').value;
+
+            fetch('http://localhost:8000/produtos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome, preco, quantidade })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('resposta').textContent = data.message;
+            })
+            .catch(err => {
+                document.getElementById('resposta').textContent = 'Erro ao chamar a API';
+            });
         }
     </script>
 </body>

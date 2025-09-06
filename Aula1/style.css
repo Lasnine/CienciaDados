@@ -7,6 +7,14 @@ h1 {
     margin-top: 50px;
 }
 
+.formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
 .resposta{
     text-align: center;
     align-items: center;

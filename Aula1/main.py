@@ -15,4 +15,7 @@ app.add_middleware(
 def rota_raiz(): 
     return {"message": "API está funcionando!"}
 
+@app.post("/produtos")
+def salvar_produtos():
+    return "Produto salvo com sucesso!"
 # python -m uvicorn main:app --reload -> ligando o servidor pelo terminal
