@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>CADASTRO DE PRODUTO</h1>
-    <form onsubmit="enviarProduto()">
+    <form onsubmit="enviarProduto(event)">
         <div class="formulario">
             <input type="text" id="nome" placeholder="Nome" required>
             <br>
@@ -19,7 +19,7 @@
         <div  class="botao">
             <button type="submit">SALVAR</button>
         </div>
-        <p id="resposta"></p>
+        <p id="resposta" class="resposta"></p>
     </form>
     <script>
         function enviarProduto(event){
